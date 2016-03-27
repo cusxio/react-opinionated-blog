@@ -25,7 +25,7 @@ function generatePage(page) {
 const routes = ['/'];
 
 Promise.all(routes.map(generatePage))
-    .then(filenames => {
-        console.log('Completed Static Html Dump -' + filenames);
+    .then(filename => {
+        console.log(`Generated ${chalk.yellow(filename)}`);
     })
     .catch(console.error.bind(console));
