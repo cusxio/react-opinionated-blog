@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+PORT='5000'
+
+OUTPUT='./dist'
+BUNDLE='./public/bundle'
+
+rm -rf $OUTPUT
+rm -rf $BUNDLE
+
+./node_modules/.bin/webpack --config ./webpack/prod.config.js
+
+PORT=$PORT node server & SERVER_PID=$!
+
+# wait for the server to start up
+while ! echo exit | nc 0.0.0.0 $PORT; do sleep 1; done
+
+./script/generator.js "http://0.0.0.0:$PORT" $OUTPUT
+
+DUMP_EXIT=$?
+
+kill $SERVER_PID
+
+if [ $DUMP_EXIT -eq 0 ]; then
+    cp -R public/* $OUTPUT
+else
+    exit $DUMP_EXIT
+fi

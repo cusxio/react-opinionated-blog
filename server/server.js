@@ -7,7 +7,7 @@ import devEnv from '../config/dev-environment';
 import render from './render';
 
 const app = new Koa();
-const port = devEnv.backendPort || 9000;
+const port = process.env.PORT || devEnv.backendPort;
 
 app.use(async (ctx, next) => {
     try {
