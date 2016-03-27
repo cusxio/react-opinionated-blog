@@ -3,3 +3,4 @@ node_modules
 app/bundles
 dist
 public
+npm-debug.log
