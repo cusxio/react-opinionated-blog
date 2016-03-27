@@ -24,7 +24,14 @@ export default function (WEBPACK_HOST, WEBPACK_PORT) {
         },
         module: {
             loaders: [
-                { test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader'] },
+                {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    loader: 'babel-loader',
+                    query: {
+                        presets: 'react-hmre',
+                    },
+                },
                 { test: /\.sass$/, loader: 'style-loader!css-loader!postcss-loader!sass-loader?indentedSyntax=sass' },
                 { test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader' },
             ],
