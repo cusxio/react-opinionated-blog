@@ -3,6 +3,7 @@ import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
 import cssmqpacker from 'css-mqpacker';
 import AssetsPlugin from 'assets-webpack-plugin';
+import notifyStats from './utils/notify-stats';
 
 export default function (WEBPACK_HOST, WEBPACK_PORT) {
     return {
@@ -12,7 +13,7 @@ export default function (WEBPACK_HOST, WEBPACK_PORT) {
             main: [
                 `webpack-dev-server/client?http://${WEBPACK_HOST}:${WEBPACK_PORT}`,
                 `webpack/hot/dev-server`,
-                './app/client/bootstrap.js',
+                './app/init.js',
             ],
         },
         output: {
@@ -44,6 +45,9 @@ export default function (WEBPACK_HOST, WEBPACK_PORT) {
                 const CLEAR_LINE = new Buffer('1b5b304b', 'hex').toString();
                 process.stdout.write(`${CLEAR_LINE}${Math.round(percentage * 100)}%: ${message}${MOVE_LEFT}`);
             }),
+            function stats() {
+                this.plugin('done', notifyStats);
+            },
             new AssetsPlugin({
                 filename: 'webpack-stats.json',
                 path: path.join(__dirname, '..', 'app', 'bundles'),

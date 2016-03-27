@@ -1,7 +1,8 @@
 import WebpackDevServer from 'webpack-dev-server';
 import webpack from 'webpack';
 import chalk from 'chalk';
-import devEnv from '../config/dev-envrionment';
+import opn from 'opn';
+import devEnv from '../config/dev-environment';
 import devConfig from './dev.config';
 
 const WEBPACK_HOST = process.env.HOST || '0.0.0.0';
@@ -16,7 +17,6 @@ const serverOptions = {
     quiet: true,
     noInfo: true,
     hot: true,
-    open: true,
     publicPath: config.output.publicPath,
     proxy: {
         '*': proxyPath,
@@ -32,5 +32,6 @@ server.listen(WEBPACK_PORT, WEBPACK_HOST, err => {
     } else {
         const url = `http://${WEBPACK_HOST}:${WEBPACK_PORT}`;
         console.log(`${chalk.cyan(`webpack development server`)} listening on ${chalk.cyan(url)}`);
+        opn(url);
     }
 });
