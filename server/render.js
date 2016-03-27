@@ -3,11 +3,11 @@ import { renderToString, renderToStaticMarkup } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 
 import getAssetsPaths from '../webpack/utils/assets-path';
-import Html from '../app/components/html';
-// todo: routes
-import routes from '../some/path';
+import Html from '../app/containers/Html';
+// WORK: routes
+import routes from '../app/router/routes';
 
-export async function render(ctx, next) {
+export default async function render(ctx, next) {
     const isHtml = ctx.headers.accept && ctx.accepts('html');
 
     if (!isHtml) {
