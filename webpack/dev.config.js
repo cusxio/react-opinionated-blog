@@ -32,6 +32,7 @@ export default function (WEBPACK_HOST, WEBPACK_PORT) {
                         presets: 'react-hmre',
                     },
                 },
+                { test: /\.json$/, loader: 'json-loader' },
                 { test: /\.sass$/, loader: 'style-loader!css-loader!postcss-loader!sass-loader?indentedSyntax=sass' },
                 { test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader' },
             ],

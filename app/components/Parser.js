@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
-export default class Index extends Component {
+export default class Parser extends Component {
     render() {
         const meta = [
             { property: 'og:type', content: 'article' },
