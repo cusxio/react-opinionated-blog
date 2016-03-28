@@ -5,16 +5,16 @@ export default class Index extends Component {
     render() {
         const meta = [
             { property: 'og:type', content: 'article' },
-            { property: "og:title", content: 'some title' },
-            { property: "og:url", content: 'http://someurl' },
-            { property: "og:description", content: 'some description' },
-            { property: "og:image", content: 'http://someurl.com/pic.png' },
-            { name: "twitter:card", content: "summary" },
-            { name: "twitter:title", content: 'some title' },
-            { name: "twitter:creator", content: 'twitter handler' },
-            { name: "twitter:site", content: 'twitter handler' },
-            { name: "twitter:description", content: 'some description' },
-            { name: "description", content: 'some description' },
+            { property: 'og:title', content: 'some title' },
+            { property: 'og:url', content: 'http://someurl' },
+            { property: 'og:description', content: 'some description' },
+            { property: 'og:image', content: 'http://someurl.com/pic.png' },
+            { name: 'twitter:card', content: 'summary' },
+            { name: 'twitter:title', content: 'some title' },
+            { name: 'twitter:creator', content: 'twitter handler' },
+            { name: 'twitter:description', content: 'some description' },
+            { name: 'twitter:image', content: 'url' },
+            { name: 'description', content: 'some description' },
         ];
         return (
             <div>
