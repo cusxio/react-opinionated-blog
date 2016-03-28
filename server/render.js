@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import { renderToString, renderToStaticMarkup } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 
@@ -22,9 +23,15 @@ export default async function render(ctx, next) {
             ctx.redirect(redirectLocation.pathname + redirectLocation.search);
         } else if (renderProps) {
             const markup = renderToString(<RouterContext {...renderProps} />);
+            const { title, meta } = Helmet.rewind();
+            const head = {
+                title: title.toComponent(),
+                meta: meta.toComponent(),
+            };
             const assets = getAssetsPaths();
             const html = renderToStaticMarkup(
                 <Html
+                    head={head}
                     markup={markup}
                     assets={assets}
                 />
