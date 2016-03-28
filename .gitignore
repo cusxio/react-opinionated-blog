@@ -4,3 +4,4 @@ app/bundles
 dist
 public
 npm-debug.log
+_droplets
