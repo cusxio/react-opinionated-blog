@@ -29,7 +29,20 @@ export default function (WEBPACK_HOST, WEBPACK_PORT) {
                     exclude: /node_modules/,
                     loader: 'babel-loader',
                     query: {
-                        presets: 'react-hmre',
+                        plugins: [
+                              ['react-transform', {
+                                  transforms: [
+                                      {
+                                          transform: 'react-transform-hmr',
+                                          imports: ['react'],
+                                          locals: ['module'],
+                                      }, {
+                                          transform: 'react-transform-catch-errors',
+                                          imports: ['react', 'redbox-react'],
+                                      },
+                                  ],
+                              }],
+                        ],
                     },
                 },
                 { test: /\.json$/, loader: 'json-loader' },
