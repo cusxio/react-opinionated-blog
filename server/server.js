@@ -7,7 +7,8 @@ import devEnv from '../config/dev-environment';
 import render from './render';
 
 const app = new Koa();
-const port = process.env.PORT || devEnv.backendPort;
+const KOA_HOST = process.env.HOST || '0.0.0.0';
+const KOA_PORT = process.env.PORT || devEnv.backendPort;
 
 app.use(async (ctx, next) => {
     try {
@@ -29,10 +30,11 @@ app.use(compress({
     flush: require('zlib').Z_SYNC_FLUSH,
 }));
 
-app.listen(port, err => {
+app.listen(KOA_PORT, KOA_HOST, err => {
     if (err) {
         console.log(chalk.red(err));
     } else {
-        console.log(`${chalk.yellow(`backend server`)} listening on ${chalk.yellow(` ~> ${port}`)}`);
+        const url = `http://${KOA_HOST}:${KOA_PORT}`;
+        console.log(`${chalk.yellow(`backend server`)} listening on ${chalk.yellow(url)}`);
     }
 });

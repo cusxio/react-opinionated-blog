@@ -31,7 +31,7 @@ server.listen(WEBPACK_PORT, WEBPACK_HOST, err => {
         console.log(chalk.red(err));
     } else {
         const url = `http://${WEBPACK_HOST}:${WEBPACK_PORT}`;
-        console.log(`${chalk.cyan(`webpack development server`)} listening on ${chalk.cyan(url)}`);
+        console.log(`${chalk.magenta(`webpack development server`)} listening on ${chalk.magenta(url)}`);
         opn(url);
     }
 });
