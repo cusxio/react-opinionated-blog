@@ -22,7 +22,7 @@ function generatePage(page) {
         });
 }
 
-const routes = ['/'];
+const routes = ['/', '/blog', '/blog/hello', '/blog/world'];
 
 Promise.all(routes.map(generatePage))
     .then(filename => {

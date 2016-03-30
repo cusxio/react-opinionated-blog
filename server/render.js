@@ -9,7 +9,6 @@ import configureStore from '../app/redux/store';
 
 import getAssetsPaths from '../webpack/utils/assets-path';
 import Html from '../app/components/Html';
-// WORK: routes
 import routes from '../app/router/routes';
 
 import ContextProvider from '../app/containers/ContextProvider';
@@ -39,9 +38,14 @@ export default async function render(ctx, next) {
         } else if (redirectLocation) {
             ctx.redirect(redirectLocation.pathname + redirectLocation.search);
         } else if (renderProps) {
+            const initialState = {
+                page: pagesfromJson[ctx.url],
+            };
+            const store = configureStore(initialState);
+
             const markup = renderToString(
                 <ContextProvider layouts={layouts} pages={pagesfromJson}>
-                    <Provider store={configureStore()}>
+                    <Provider store={store}>
                         <RouterContext {...renderProps} />
                     </Provider>
                 </ContextProvider>
