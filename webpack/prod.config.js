@@ -43,6 +43,8 @@ module.exports = {
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
+                unused: true,
+                dead_code: true,
                 warnings: false,
             },
         }),

@@ -6,6 +6,7 @@ import pagesfromJson from '../_tmp/data.json';
 import ContextProvider from './containers/ContextProvider';
 import configureStore from './redux/store';
 import routes from './router/routes';
+import './css/style.sass';
 
 import Home from './components/Home';
 import Blog from './components/Blog';
