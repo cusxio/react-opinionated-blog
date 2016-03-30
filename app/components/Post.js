@@ -15,7 +15,7 @@ const meta = [
     { name: 'description', content: 'some description' },
 ];
 
-const Page = props => (
+const Post = props => (
     <div>
         <Helmet
             title="Index"
@@ -29,4 +29,4 @@ const Page = props => (
     </div>
 );
 
-export default Page;
+export default Post;

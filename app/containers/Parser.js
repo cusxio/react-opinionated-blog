@@ -11,6 +11,7 @@ const canGetPage = route => {
 const contextTypes = {
     layouts: PropTypes.object,
     pages: PropTypes.object,
+    router: PropTypes.object,
 };
 
 const propTypes = {
@@ -26,7 +27,7 @@ class Parser extends Component {
         }
     }
     componentWillReceiveProps(nextProps) {
-        const route = splatToUrl(this.props.params.splat);
+        const route = splatToUrl(nextProps.params.splat);
         if (canGetPage(route)) {
             this.getPage(nextProps, this.context);
         }
@@ -38,11 +39,9 @@ class Parser extends Component {
             const currentExactPageUrl = window.location.href
             .replace((window.location.protocol + "//" + window.location.host), "")
             .replace(window.location.hash, "");
-            console.log(currentExactPageUrl);
-
             if (currentExactPageUrl !== route) {
-                if (props.history) {
-                    props.history.replace(pageInContext.__ROUTE__);
+                if (context.router) {
+                    context.router.replace(pageInContext.__ROUTE__);
                 }
             }
         }
@@ -67,7 +66,7 @@ class Parser extends Component {
         const page = this.props.page;
         const Layout = this.getLayout(this.props, this.context);
         return (
-            <Layout {...page} />
+            <Layout {...page} pages={this.context.pages} />
         );
     }
 }
