@@ -12,6 +12,7 @@ const Html = ({ assets, markup, head }) => (
             <meta charSet="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="stylesheet" href={assets.css} />
+            <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
             {/* Social */}
             {head.meta}
             {head.title}
