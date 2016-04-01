@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { findDOMNode } from 'react-dom';
 import * as ActionTypes from '../redux/actions';
 
 const splatToUrl = string => (`/${string}`);
@@ -7,6 +8,12 @@ const canUseDOM = Boolean(typeof window !== 'undefined' && window.document && wi
 const canGetPage = route => {
     return Boolean(route !== '/' && route !== '/blog');
 };
+
+let _catchLinks;
+
+if (canUseDOM) {
+    _catchLinks = require('../utils/catch-links').default;
+}
 
 const contextTypes = {
     layouts: PropTypes.object,
@@ -32,6 +39,12 @@ class Parser extends Component {
             this.getPage(nextProps, this.context);
         }
     }
+    componentDidUpdate() {
+        this.catchLinks();
+    }
+    componentDidMount() {
+        this.catchLinks();
+    }
     getPage(props, context) {
         const route = splatToUrl(props.params.splat);
         const pageInContext = context.pages[route];
@@ -46,7 +59,7 @@ class Parser extends Component {
             }
         }
         const page = props.page;
-        if (!page) {
+        if (!page || page.__ROUTE__ !== pageInContext.__ROUTE__) {
             if (pageInContext) {
                 props.getPage(pageInContext.__ROUTE__);
             }
@@ -62,11 +75,32 @@ class Parser extends Component {
             return context.layouts.Blog;
         }
     }
+    catchLinks() {
+        if (!canUseDOM) {
+            return;
+        }
+        if (this._component) {
+            const node = findDOMNode(this._component);
+            if (node) {
+                _catchLinks(node, href => {
+                    const route = href;
+                    const pageInContext = this.context.pages[route];
+                    if (!pageInContext) {
+                        return false;
+                    }
+                    if (this.context.router) {
+                        this.context.router.push(route);
+                    }
+                    return true;
+                });
+            }
+        }
+    }
     render() {
         const page = this.props.page;
         const Layout = this.getLayout(this.props, this.context);
         return (
-            <Layout {...page} pages={this.context.pages} />
+            <Layout ref={ref => (this._component = ref)} {...page} pages={this.context.pages} />
         );
     }
 }
