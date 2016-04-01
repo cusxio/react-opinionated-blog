@@ -67,7 +67,7 @@
     filter: alpha(opacity=0);
     opacity: 0;
     pointer-events: none;
-    transition: all 0.25s ease-in-out 0.25s;
+    transition: all 0.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.25s;
     bottom: 100%;
     left: 50%;
     position: absolute;
@@ -131,4 +131,52 @@
 [data-tooltip-pos="down"]:hover:before,
 [data-tooltip-pos="down"]:hover:after {
     transform: translate(-50%, 0);
+}
+
+.social {
+    margin-top: 5rem;
+    width: 100%;
+    text-align: center;
+    a {
+        display: inline-block;
+        text-decoration: none;
+        margin-right: 60px;
+        font-size: 1.2rem;
+        transition: color 0.25s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        color: #aaaeb2;
+        &:nth-child(1) {
+            &:hover {
+                color: #55ACEE;
+            }
+        }
+        &:nth-child(2) {
+            &:hover {
+                color: #3b5998;
+            }
+        }
+        &:nth-child(3) {
+            margin-right: 0px;
+            &:hover {
+                color: #dd4b39;
+            }
+        }
+        i {
+            width: 48px;
+            height: 48px;
+            display: inline-block;
+            border: 2px solid transparent;
+            border-radius: 50px;
+            padding: 10px;
+            transition: border-color 0.25s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        }
+    }
+    .ion-social-twitter:hover {
+        border-color: #55ACEE;
+    }
+    .ion-social-facebook:hover {
+        border-color: #3b5998;
+    }
+    .ion-social-googleplus:hover {
+        border-color: #dd4b39;
+    }
 }

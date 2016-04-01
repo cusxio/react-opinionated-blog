@@ -44,6 +44,17 @@ export default class Blog extends Component {
                         {/* eslint-disable */}
                         <div className="markdown-body post--content" dangerouslySetInnerHTML={{ __html: mostRecent.__HTML__ }}></div>
                         {/* eslint-enable */}
+                        <div className="social">
+                            <a data-tooltip="Share on Twitter" data-tooltip-pos="down" href="">
+                                <i className="ion-social-twitter"></i>
+                            </a>
+                            <a data-tooltip="Share on Facebook" data-tooltip-pos="down" href={`https://www.facebook.com/sharer/sharer.php?u=http://cusx.io${mostRecent.__ROUTE__}`} target="share">
+                                <i className="ion-social-facebook"></i>
+                            </a>
+                            <a data-tooltip="Share on Google Plus" data-tooltip-pos="down" href={`https://plus.google.com/share?url=http://cusx.io${mostRecent.__ROUTE__}`} target="share">
+                                <i className="ion-social-googleplus"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <Link to={nextPost.__ROUTE__} className="blog__next">
