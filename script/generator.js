@@ -22,7 +22,7 @@ function generatePage(page) {
         });
 }
 
-const routes = ['/', '/blog', '/blog/hello', '/blog/world'];
+const routes = ['/', '/blog', '/blog/ruby-brew-conflict', '/blog/god-or-me', '/blog/revelation', '/blog/the-bound'];
 
 Promise.all(routes.map(generatePage))
     .then(filename => {
