@@ -30,6 +30,7 @@ function mdToJson() {
         const fileAsArr = file.split('-');
         const date = `${fileAsArr[0]}-${fileAsArr[1]}-${fileAsArr[2]}`;
         const formattedDate = moment(date).format('MMMM Do YYYY');
+        const shortDate = moment(date).format('DD MMM YYYY');
         const filename = fileAsArr[4];
 
         const mdFilePath = path.join(mdFilesDir, file);
@@ -39,6 +40,7 @@ function mdToJson() {
         const html = marked(parsed.content);
         output[route] = {
             __TITLE__: title,
+            __SDATE__: shortDate,
             __DATE__: formattedDate,
             __DESC__: description,
             __LAYOUT__: layout,
