@@ -9,7 +9,7 @@ const propTypes = {
 const Html = ({ assets, markup, head }) => (
     <html lang="en" className="no-js">
         <head>
-            <meta charSet="UTF-8" />
+            <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="stylesheet" href={assets.css} />
             <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />

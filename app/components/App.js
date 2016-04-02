@@ -7,7 +7,8 @@ const propTypes = {
 
 const meta = [
     { name: 'twitter:site', content: '@cusxio' },
-    { property: 'og:site_name', content: 'cusxio' },
+    { name: 'author', content: 'Jonathan Chan' },
+    { property: 'og:site_name', content: 'cusx.io' },
 ];
 
 const App = ({ children }) => (

@@ -24,10 +24,24 @@ export default class Blog extends Component {
         const pagesArr = Object.keys(pages).map(key => pages[key]).reverse();
         const mostRecent = pagesArr[0];
         const nextPost = pagesArr[1];
+        const meta = [
+            { property: 'og:type', content: 'article' },
+            { property: 'og:title', content: mostRecent.__TITLE__ },
+            { property: 'og:url', content: `http://cusx.io${mostRecent.__ROUTE__}` },
+            { property: 'og:description', content: mostRecent.__DESC__ },
+            // { property: 'og:image', content: 'http://someurl.com/pic.png' },
+            { name: 'twitter:card', content: 'summary' },
+            { name: 'twitter:title', content: mostRecent.__TITLE__ },
+            { name: 'twitter:creator', content: '@cusxio' },
+            { name: 'twitter:description', content: mostRecent.__DESC__ },
+            { name: 'twitter:image', content: `http://cusx.io${mostRecent.__ROUTE__}` },
+            { name: 'description', content: mostRecent.__DESC__ },
+        ];
         return (
             <div className="blog">
                 <Helmet
                     title="cusx.io | Blog"
+                    meta={meta}
                 />
                 <div className="blog__header">
                     <h1>Droplets</h1>
@@ -45,7 +59,7 @@ export default class Blog extends Component {
                     <div className="markdown-body post--content" dangerouslySetInnerHTML={{ __html: mostRecent.__HTML__ }}></div>
                     {/* eslint-enable */}
                     <div className="social">
-                        <a data-tooltip="Share on Twitter" data-tooltip-pos="down" href="">
+                        <a data-tooltip="Share on Twitter" data-tooltip-pos="down" href={`https://twitter.com/intent/tweet?url=https://cusx.io${mostRecent.__ROUTE__}&text=${mostRecent.__DESC__}&via=cusxio`} target="share">
                             <i className="ion-social-twitter"></i>
                         </a>
                         <a data-tooltip="Share on Facebook" data-tooltip-pos="down" href={`https://www.facebook.com/sharer/sharer.php?u=http://cusx.io${mostRecent.__ROUTE__}`} target="share">

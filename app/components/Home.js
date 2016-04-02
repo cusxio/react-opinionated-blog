@@ -30,9 +30,15 @@ export default class Home extends Component {
         target.dataset.tooltip = 'Copy email';
     }
     render() {
+        const meta = [
+            { name: 'description', content: 'cusx.io - Website for Jonathan Chan' },
+        ];
         return (
             <div className="home">
-                <Helmet title="cusx.io | Home" />
+                <Helmet
+                    title="cusx.io | Home"
+                    meta={meta}
+                />
                 <div className="home__logo">
                     <div className="box one">
                         <div className="center-align-1">

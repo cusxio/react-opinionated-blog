@@ -2,20 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
 import Footer from './Footer';
 
-const meta = [
-    { property: 'og:type', content: 'article' },
-    { property: 'og:title', content: 'some title' },
-    { property: 'og:url', content: 'http://someurl' },
-    { property: 'og:description', content: 'some description' },
-    { property: 'og:image', content: 'http://someurl.com/pic.png' },
-    { name: 'twitter:card', content: 'summary' },
-    { name: 'twitter:title', content: 'some title' },
-    { name: 'twitter:creator', content: 'twitter handler' },
-    { name: 'twitter:description', content: 'some description' },
-    { name: 'twitter:image', content: 'url' },
-    { name: 'description', content: 'some description' },
-];
-
 const contextTypes = {
     router: PropTypes.object,
 };
@@ -31,6 +17,19 @@ export default class Post extends Component {
     }
     render() {
         const post = this.props;
+        const meta = [
+            { property: 'og:type', content: 'article' },
+            { property: 'og:title', content: post.__TITLE__ },
+            { property: 'og:url', content: `http://cusx.io${post.__ROUTE__}` },
+            { property: 'og:description', content: post.__DESC__ },
+            // { property: 'og:image', content: 'http://someurl.com/pic.png' },
+            { name: 'twitter:card', content: 'summary' },
+            { name: 'twitter:title', content: post.__TITLE__ },
+            { name: 'twitter:creator', content: '@cusxio' },
+            { name: 'twitter:description', content: post.__DESC__ },
+            { name: 'twitter:image', content: `http://cusx.io${post.__ROUTE__}` },
+            { name: 'description', content: post.__DESC__ },
+        ];
         return (
             <div className="one__container">
                 <div className="blog__post">
@@ -52,7 +51,7 @@ export default class Post extends Component {
                     <div className="markdown-body post--content" dangerouslySetInnerHTML={{ __html: post.__HTML__ }}></div>
                     {/* eslint-enable */}
                     <div className="social">
-                        <a data-tooltip="Share on Twitter" data-tooltip-pos="down" href="">
+                        <a data-tooltip="Share on Twitter" data-tooltip-pos="down" href={`https://twitter.com/intent/tweet?url=https://cusx.io${post.__ROUTE__}&text=${post.__DESC__}&via=cusxio`} target="share">
                             <i className="ion-social-twitter"></i>
                         </a>
                         <a data-tooltip="Share on Facebook" data-tooltip-pos="down" href={`https://www.facebook.com/sharer/sharer.php?u=http://cusx.io${post.__ROUTE__}`} target="share">
