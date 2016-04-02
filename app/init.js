@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, browserHistory } from 'react-router';
+import { Router, useRouterHistory } from 'react-router';
+import createBrowserHistory from 'history/lib/createBrowserHistory';
+import useScroll from 'scroll-behavior/lib/useStandardScroll';
 import { Provider } from 'react-redux';
 import pagesfromJson from '../_tmp/data.json';
 import ContextProvider from './containers/ContextProvider';
@@ -18,12 +20,14 @@ const layouts = {
     Post,
 };
 
+const history = useScroll(useRouterHistory(createBrowserHistory))();
+
 const store = configureStore();
 
 const clientSide = (
     <ContextProvider pages={pagesfromJson} layouts={layouts}>
         <Provider store={store}>
-            <Router history={browserHistory} routes={routes} />
+            <Router history={history} routes={routes} />
         </Provider>
     </ContextProvider>
 );
