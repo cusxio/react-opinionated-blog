@@ -1,0 +1,124 @@
+.home
+    cursor: default
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    height: 100vh
+    text-align: center
+    text-transform: uppercase
+
+.home__logo
+    opacity: 0
+    width: 75px
+    height: 75px
+    margin: 0 auto
+    font-weight: 500
+    margin-top: -50px
+    user-select: none
+    animation-delay: 0.25s
+    animation-name: fadeInDown
+    animation-duration: 1s
+    animation-fill-mode: both
+    .box 
+        width: 50%
+        height: 50%
+        float: left
+        &.one, &.two
+            border-top: 2px solid #333
+        &.one, &.three
+            border-left: 2px solid #333
+        &.four, &.two 
+            border-right: 2px solid #333
+        &.four, &.three
+            border-bottom: 2px solid #333
+
+.home__text
+    padding: 50px 0 40px 0
+    .name, .desc, .location,
+        animation-name: fadeIn
+        animation-duration: 1s
+        animation-fill-mode: both
+    .name
+        opacity: 0
+        color: #333
+        font-weight: 800
+        letter-spacing: 0.4rem
+        font-size: 1.5rem
+        margin: 0
+        animation-delay: 1.25s
+    .desc
+        opacity: 0
+        padding: 10px 0 10px 0
+        animation-delay: 1.45s
+        h2
+            color: #666
+            font-weight: 400
+            letter-spacing: 0.1rem
+            font-size: 1rem
+        .ion-android-favorite
+            color: #f16162
+        .ion-university
+            color: #926239
+            font-size: 1.15rem
+    .location
+        opacity: 0
+        color: #aaaeb2
+        font-weight: 400
+        letter-spacing: 0.1rem
+        font-size: 0.9rem
+        animation-delay: 1.65s
+.home__link
+    a
+        opacity: 0
+        display: inline-block
+        color: #333
+        z-index: 1
+        text-decoration: none
+        font-size: 1.5rem
+        margin-right: 48px
+        transition: color 0.5s ease
+        animation-name: fadeInUp
+        animation-duration: 1s
+        animation-fill-mode: both
+        &:last-child
+            margin-right: 0
+        &:nth-child(1)
+            animation-delay: 1.85s
+            &:hover
+                color: #4099FF
+        &:nth-child(2)
+            animation-delay: 2.05s
+            &:hover
+                color: #885ead
+        &:nth-child(3)
+            animation-delay: 2.25s
+            &:hover
+                color: #0077B5
+        &:nth-child(4)
+            animation-delay: 2.45s
+            &:hover
+                color: #00aced
+        &:nth-child(5)
+            animation-delay: 2.65s
+            font-size: 1.58em
+            z-index: 1
+            &:hover
+                color: #dd4b39
+
+.home__copyright
+    opacity: 0
+    width: 100%
+    text-align: center
+    position: absolute
+    bottom: 10px
+    animation-name: fadeIn
+    animation-duration: 1s
+    animation-fill-mode: both
+    animation-delay: 2.85s
+    font-size: 12px
+    font-weight: 200
+    color: #aaaeb2
+
+
+
