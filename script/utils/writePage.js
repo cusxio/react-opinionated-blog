@@ -1,6 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import url from 'url';
+import chalk from 'chalk';
 import { mkdirP as mkdirPCallback } from 'mkdirp';
 import { promisify } from 'bluebird';
 
@@ -12,5 +13,7 @@ export default (outputDir, [pageUrl, response]) => {
     const filename = path.join(outputDir, pathname, 'index.html');
     return mkdirP(path.dirname(filename))
         .then(() => writeFile(filename, response))
-        .then(() => filename);
+        .then(() => {
+            console.log(`    ${chalk.blue('✔ Generated')} ${chalk.yellow(filename)}`);
+        });
 };
