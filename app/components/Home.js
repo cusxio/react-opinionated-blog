@@ -64,7 +64,10 @@ export default class Home extends Component {
                 <div className="home__text">
                     <h1 className="name">Jonathan Chan</h1>
                     <div className="desc">
-                        <h2>Web Developer <i className="ion-android-favorite"></i> &middot; Chemical Engineer <i className="ion-university"></i></h2>
+                        <h2>
+                            <span>Web Developer </span><i className="ion-android-favorite"></i> <span>&middot; </span>
+                            <span>Chemical Engineer </span><i className="ion-university"></i>
+                        </h2>
                         <h2></h2>
                     </div>
                     <h3 className="location">From Malaysia</h3>

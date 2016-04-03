@@ -3,10 +3,9 @@ import { Route } from 'react-router';
 
 import App from '../components/App';
 import Parser from '../containers/Parser';
-import browserInteraction from '../containers/browserInteraction';
 
 const routes = (
-    <Route component={browserInteraction(App, 1200, 'h', 's')}>
+    <Route component={App}>
         <Route path="*" component={Parser} />
     </Route>
 );

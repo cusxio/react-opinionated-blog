@@ -59,7 +59,7 @@ export default class Blog extends Component {
                     <div className="cus post--content" dangerouslySetInnerHTML={{ __html: mostRecent.__HTML__ }}></div>
                     {/* eslint-enable */}
                     <div className="social">
-                        <a data-tooltip="Share on Twitter" data-tooltip-pos="down" href={`https://twitter.com/intent/tweet?url=https://cusx.io${mostRecent.__ROUTE__}&text=${mostRecent.__DESC__}&via=cusxio`} target="share">
+                        <a data-tooltip="Share on Twitter" data-tooltip-pos="down" href={`https://twitter.com/intent/tweet?url=http://cusx.io${mostRecent.__ROUTE__}&text=${mostRecent.__DESC__}&via=cusxio`} target="share">
                             <i className="ion-social-twitter"></i>
                         </a>
                         <a data-tooltip="Share on Facebook" data-tooltip-pos="down" href={`https://www.facebook.com/sharer/sharer.php?u=http://cusx.io${mostRecent.__ROUTE__}`} target="share">

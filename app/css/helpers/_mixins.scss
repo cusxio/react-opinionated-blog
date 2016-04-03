@@ -2,6 +2,7 @@
 @import '../../../node_modules/sass-mediaqueries/_media-queries.scss';
 
 // $breakpoints: (
+//     xxsmall: 15.0625, 241px
 //     xsmall: 20.0625rem, 321px
 //     small: 40.0625rem, 641px
 //     medium: 48.0625rem, 769px
@@ -10,12 +11,19 @@
 // );
 
 $breakpoints: (
+    xxsmall: 15.0625rem,
     xsmall: 20.0625rem,
     small: 40.0625rem,
     medium: 48.0625rem,
     large: 64.0625rem,
     xlarge: 75.0625rem
 );
+
+@mixin xxsmall {
+    @include mq($min-width: map-get($breakpoints, xxsmall)) {
+        @content
+    }
+};
 
 @mixin xsmall {
     @include mq($min-width: map-get($breakpoints, xsmall)) {

@@ -56,6 +56,10 @@
             font-weight: 400
             letter-spacing: 0.1rem
             font-size: 1rem
+            span:nth-child(3)
+                display: block
+                @include xsmall
+                    display: inline
         .ion-android-favorite
             color: #f16162
         .ion-university
@@ -76,13 +80,15 @@
         z-index: 1
         text-decoration: none
         font-size: 1.5rem
-        margin-right: 48px
+        margin-right: 20px
+        @include xxsmall
+            margin-right: 30px
+        @include xsmall
+            margin-right: 48px
         transition: color 0.5s ease
         animation-name: fadeInUp
         animation-duration: 1s
         animation-fill-mode: both
-        &:last-child
-            margin-right: 0
         &:nth-child(1)
             animation-delay: 1.85s
             &:hover
@@ -103,6 +109,7 @@
             animation-delay: 2.65s
             font-size: 1.58em
             z-index: 1
+            margin-right: 0
             &:hover
                 color: #dd4b39
 

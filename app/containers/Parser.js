@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
+import { canUseDOM } from 'exenv';
 import { connect } from 'react-redux';
 import { findDOMNode } from 'react-dom';
 import * as ActionTypes from '../redux/actions';
 
 const splatToUrl = string => (`/${string}`);
-const canUseDOM = Boolean(typeof window !== 'undefined' && window.document && window.document.createElement);
 const canGetPage = route => {
     return Boolean(route !== '/' && route !== '/blog');
 };
