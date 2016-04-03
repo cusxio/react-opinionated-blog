@@ -30,7 +30,13 @@ module.exports = {
             { test: /\.json$/, loader: 'json-loader' },
             { test: /\.sass$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!sass-loader?indentedSyntax=sass') },
             { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader') },
+            { test: /\.modernizrrc$/, loader: 'modernizr' },
         ],
+    },
+    resolve: {
+        alias: {
+            modernizr$: path.resolve(__dirname, '../config/.modernizrrc'),
+        },
     },
     postcss: [autoprefixer({ browsers: ['last 2 version'] }), cssmqpacker],
     plugins: [
@@ -55,7 +61,6 @@ module.exports = {
                 dead_code: true,
                 warnings: false,
             },
-            comments: false,
         }),
         new AssetsPlugin({
             filename: 'webpack-stats.json',
