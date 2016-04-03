@@ -51,12 +51,12 @@ export default class Blog extends Component {
                 <div className="blog__post">
                     <div className="post--header">
                         <h1>
-                            <Link to={mostRecent.__ROUTE__}>{mostRecent.__TITLE__}</Link>
+                            <Link to={mostRecent.__ROUTE__} title={mostRecent.__TITLE__}>{mostRecent.__TITLE__}</Link>
                         </h1>
                         <p>Jonathan Chan &middot; {mostRecent.__DATE__}</p>
                     </div>
                     {/* eslint-disable */}
-                    <div className="markdown-body post--content" dangerouslySetInnerHTML={{ __html: mostRecent.__HTML__ }}></div>
+                    <div className="cus post--content" dangerouslySetInnerHTML={{ __html: mostRecent.__HTML__ }}></div>
                     {/* eslint-enable */}
                     <div className="social">
                         <a data-tooltip="Share on Twitter" data-tooltip-pos="down" href={`https://twitter.com/intent/tweet?url=https://cusx.io${mostRecent.__ROUTE__}&text=${mostRecent.__DESC__}&via=cusxio`} target="share">
@@ -70,7 +70,7 @@ export default class Blog extends Component {
                         </a>
                     </div>
                 </div>
-                <Link to={nextPost.__ROUTE__} className="blog__next">
+                <Link title={nextPost.__TITLE__} to={nextPost.__ROUTE__} className="blog__next">
                     <div className="post">
                         <span><i className="ion-waterdrop"></i>Previous Thoughts:</span>
                         <span>{nextPost.__TITLE__}</span>

@@ -48,7 +48,7 @@ export default class Post extends Component {
                         <p>Jonathan Chan &middot; {post.__DATE__}</p>
                     </div>
                     {/* eslint-disable */}
-                    <div className="markdown-body post--content" dangerouslySetInnerHTML={{ __html: post.__HTML__ }}></div>
+                    <div className="cus post--content" dangerouslySetInnerHTML={{ __html: post.__HTML__ }}></div>
                     {/* eslint-enable */}
                     <div className="social">
                         <a data-tooltip="Share on Twitter" data-tooltip-pos="down" href={`https://twitter.com/intent/tweet?url=https://cusx.io${post.__ROUTE__}&text=${post.__DESC__}&via=cusxio`} target="share">
