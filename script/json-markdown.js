@@ -1,26 +1,10 @@
 import path from 'path';
 import fs from 'fs';
 import parser from 'gray-matter';
-import marked from 'marked';
 import chalk from 'chalk';
 import moment from 'moment';
+import axios from 'axios';
 import Promise from 'bluebird';
-
-marked.setOptions({
-    renderer: new marked.Renderer(),
-    highlight: function (code, lang, callback) {
-        require('pygmentize-bundled')({ lang: lang, format: 'html' }, code, function (err, result) {
-            callback(err, result.toString());
-        });
-    },
-    gfm: true,
-    tables: true,
-    breaks: true,
-    pedantic: false,
-    sanitize: true,
-    smartLists: true,
-    smartypants: false,
-});
 
 const mdFilesDir = path.join(__dirname, '..', '_droplets');
 const mdFilesArr = fs.readdirSync(mdFilesDir);
@@ -40,10 +24,12 @@ Promise.mapSeries(mdFilesArr, file => {
     const { title, description, layout, route, tags } = parsed.data;
 
     return new Promise((resolve, reject) => {
-        marked(parsed.content, function (err, content) {
-            if (err) {
-                reject();
-            }
+        axios.post('https://api.github.com/markdown', {
+            text: parsed.content,
+            mode: 'gfm',
+            context: 'github/gollum',
+        })
+        .then(response => {
             output[route] = {
                 __TITLE__: title,
                 __ODATE__: date,
@@ -53,10 +39,13 @@ Promise.mapSeries(mdFilesArr, file => {
                 __LAYOUT__: layout,
                 __ROUTE__: route,
                 __TAGS__: tags,
-                __HTML__: content,
+                __HTML__: response.data,
                 __FILE__: filename,
             };
             resolve();
+        })
+        .catch(() => {
+            reject();
         });
     });
 }).then(() => {
