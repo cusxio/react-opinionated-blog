@@ -1,3 +1,8 @@
+@font-face {
+    font-family: octicons-link;
+    src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
 .cus {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
@@ -35,7 +40,13 @@
     height: 0;
 }
 
-.cus kbd {
+.cus pre {
+    overflow: auto;
+}
+
+.cus code,
+.cus kbd,
+.cus pre {
     font-family: monospace, monospace;
     font-size: 1em;
 }
@@ -173,9 +184,62 @@
     font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
     font-size: 12px;
 }
+// custom
+.cus pre {
+    max-height: 600px;
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    border: 1px solid #ccc;
+    border-bottom-left-radius: 3px ;
+    border-bottom-right-radius: 3px ;
+}
 
+.cus pre span {
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+div[class*=highlight-source]::before {
+    display: block;
+    text-align: right;
+    padding: 10px;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: #999;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background-color: #eee
+}
+
+div[class*=highlight-source-shell]::before {
+    content: "SHELL";
+}
+
+div[class*=highlight-source-js]::before {
+    content: "JS";
+}
+
+// end
 .cus .select::-ms-expand {
     opacity: 0;
+}
+
+.cus .octicon {
+    font: normal normal normal 16px/1 octicons-link;
+    display: inline-block;
+    text-decoration: none;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.cus .octicon-link:before {
+    content: '\f05c';
 }
 
 .cus:before {
@@ -224,6 +288,17 @@
     line-height: 1.4;
 }
 
+.cus h1 .octicon-link,
+.cus h2 .octicon-link,
+.cus h3 .octicon-link,
+.cus h4 .octicon-link,
+.cus h5 .octicon-link,
+.cus h6 .octicon-link {
+    color: #000;
+    vertical-align: middle;
+    visibility: hidden;
+}
+
 .cus h1:hover .anchor,
 .cus h2:hover .anchor,
 .cus h3:hover .anchor,
@@ -231,6 +306,15 @@
 .cus h5:hover .anchor,
 .cus h6:hover .anchor {
     text-decoration: none;
+}
+
+.cus h1:hover .anchor .octicon-link,
+.cus h2:hover .anchor .octicon-link,
+.cus h3:hover .anchor .octicon-link,
+.cus h4:hover .anchor .octicon-link,
+.cus h5:hover .anchor .octicon-link,
+.cus h6:hover .anchor .octicon-link {
+    visibility: visible;
 }
 
 .cus h1 {
@@ -294,7 +378,8 @@
 .cus ul,
 .cus ol,
 .cus dl,
-.cus table {
+.cus table,
+.cus pre {
     margin-top: 0;
     margin-bottom: 16px;
 }
@@ -388,6 +473,72 @@
     background-color: #fff;
 }
 
+.cus code {
+    padding: 0;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    margin: 0;
+    font-size: 85%;
+    background-color: rgba(0, 0, 0, 0.04);
+    border-radius: 3px;
+}
+
+.cus code:before,
+.cus code:after {
+    letter-spacing: -0.2em;
+    content: "\00a0";
+}
+
+.cus pre>code {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    word-break: normal;
+    white-space: pre;
+    background: transparent;
+    border: 0;
+}
+
+.cus .highlight {
+    margin-bottom: 16px;
+}
+
+.cus .highlight pre,
+.cus pre {
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    // border-radius: 3px; Might not be necessary.
+}
+
+.cus .highlight pre {
+    margin-bottom: 0;
+    word-break: normal;
+}
+
+.cus pre {
+    word-wrap: normal;
+}
+
+.cus pre code {
+    display: inline;
+    max-width: initial;
+    padding: 0;
+    margin: 0;
+    overflow: initial;
+    line-height: inherit;
+    word-wrap: normal;
+    background-color: transparent;
+    border: 0;
+}
+
+.cus pre code:before,
+.cus pre code:after {
+    content: normal;
+}
+
 .cus kbd {
     display: inline-block;
     padding: 3px 5px;
@@ -400,6 +551,105 @@
     border-bottom-color: #bbb;
     border-radius: 3px;
     box-shadow: inset 0 -1px 0 #bbb;
+}
+
+.cus .pl-c {
+    color: #969896;
+}
+
+.cus .pl-c1,
+.cus .pl-s .pl-v {
+    color: #0086b3;
+}
+
+.cus .pl-e,
+.cus .pl-en {
+    color: #795da3;
+}
+
+.cus .pl-s .pl-s1,
+.cus .pl-smi {
+    color: #333;
+}
+
+.cus .pl-ent {
+    color: #63a35c;
+}
+
+.cus .pl-k {
+    color: #a71d5d;
+}
+
+.cus .pl-pds,
+.cus .pl-s,
+.cus .pl-s .pl-pse .pl-s1,
+.cus .pl-sr,
+.cus .pl-sr .pl-cce,
+.cus .pl-sr .pl-sra,
+.cus .pl-sr .pl-sre {
+    color: #183691;
+}
+
+.cus .pl-v {
+    color: #ed6a43;
+}
+
+.cus .pl-id {
+    color: #b52a1d;
+}
+
+.cus .pl-ii {
+    background-color: #b52a1d;
+    color: #f8f8f8;
+}
+
+.cus .pl-sr .pl-cce {
+    color: #63a35c;
+    font-weight: bold;
+}
+
+.cus .pl-ml {
+    color: #693a17;
+}
+
+.cus .pl-mh,
+.cus .pl-mh .pl-en,
+.cus .pl-ms {
+    color: #1d3e81;
+    font-weight: bold;
+}
+
+.cus .pl-mq {
+    color: #008080;
+}
+
+.cus .pl-mi {
+    color: #333;
+    font-style: italic;
+}
+
+.cus .pl-mb {
+    color: #333;
+    font-weight: bold;
+}
+
+.cus .pl-md {
+    background-color: #ffecec;
+    color: #bd2c00;
+}
+
+.cus .pl-mi1 {
+    background-color: #eaffea;
+    color: #55a532;
+}
+
+.cus .pl-mdr {
+    color: #795da3;
+    font-weight: bold;
+}
+
+.cus .pl-mo {
+    color: #1d3e81;
 }
 
 .cus kbd {
@@ -433,85 +683,4 @@
     z-index: 1;
     position: relative;
     border-color: #4078c0;
-}
-
-.cus code {
-    padding: 0;
-    padding-top: 0.2em;
-    padding-bottom: 0.2em;
-    margin: 0;
-    font-size: 85%;
-    background-color: rgba(0, 0, 0, 0.04);
-    border-radius: 3px;
-}
-
-.cus code:before,
-.cus code:after {
-    letter-spacing: -0.2em;
-    content: "\00a0";
-}
-
-.cus > pre {
-    margin: 20px -10% !important;
-    white-space: normal;
-}
-
-.cus .highlight pre {
-    color: #ffffff;
-    background-color: #1B2B34;
-    white-space: pre;
-    padding: 20px;
-    overflow: auto;
-    max-height: 600px;
-    span {
-        font-family: 'Source Code Pro', Consolas, "Liberation Mono", Menlo, Courier, monospace;
-        font-size: 14px;
-        background-color: transparent;
-    }
-}
-
-.cus {
-    .kd,
-    .k {
-        color: #C594C5
-    }
-    .p,
-    .kr {
-        color: #5FB3B3
-    }
-    .o,
-    .sr,
-    .nx,
-    .err,
-    {
-        color: #ffffff
-    }
-    .nb {
-        color: #FAC863
-    }
-    .mi {
-        color: #F99157
-    }
-    .s1,
-    .s2 {
-        color: #99C794
-    }
-    .cm,
-    .c1 {
-        color: #65737E
-    }
-}
-
-code[class*=lang-]::before {
-    content: "</Code>";
-    text-transform: uppercase;
-    display: block;
-    text-align: right;
-    padding: 10px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 800;
-    font-size: 1.2rem;
-    letter-spacing: 2px;
-    color: #999;
-    background-color: rgba(17, 28, 34, 1)
 }
