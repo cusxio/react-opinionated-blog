@@ -4,6 +4,7 @@ var autoprefixer = require('autoprefixer');
 var cssmqpacker = require('css-mqpacker');
 var AssetsPlugin = require('assets-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var Purify = require("purifycss-webpack-plugin");
 
 module.exports = {
     devtool: 'source-map',
@@ -34,6 +35,13 @@ module.exports = {
     postcss: [autoprefixer({ browsers: ['last 2 version'] }), cssmqpacker],
     plugins: [
         new ExtractTextPlugin('[name]-[chunkhash].css'),
+        new Purify({
+            basePath: __dirname,
+            purifyOptions: {
+                minify: true,
+                info: true,
+            },
+        }),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify('production'),
