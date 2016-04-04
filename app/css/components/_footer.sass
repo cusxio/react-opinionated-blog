@@ -11,14 +11,8 @@
             margin-right: 30px
             opacity: 0.7
             transition: opacity 0.1s ease-in-out, color 0.1s ease-in-out 
-            &:first-child:hover
-                opacity: 1
-                color: #f16162
             &:last-child
                 margin-right: 0px
-                &:hover
-                    opacity: 1
-                    color: #00aced
     .footer__copyright
         font-size: 12px
         margin-bottom: 1rem
@@ -27,9 +21,6 @@
             color: #555
             opacity: 0.7
             transition: opacity 0.1s ease-in-out, text-decoration 0.1s ease-in-out 
-            &:hover
-                opacity: 1
-                text-decoration: underline
     .footer__designwithlove
         font-size: 12px
         padding-bottom: 1rem
@@ -38,6 +29,22 @@
             color: #555
             opacity: 0.7
             transition: opacity 0.1s ease-in-out, text-decoration 0.1s ease-in-out 
-            &:hover
+.h
+    .footer
+        .footer__links
+            a
+                &:first-child:hover
+                    opacity: 1
+                    color: #f16162
+                &:last-child:hover
+                    opacity: 1
+                    color: #00aced
+        .footer__copyright
+            a:hover
                 opacity: 1
                 text-decoration: underline
+        .footer__designwithlove
+            a:hover
+                opacity: 1
+                text-decoration: underline
+

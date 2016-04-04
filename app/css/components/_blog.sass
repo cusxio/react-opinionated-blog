@@ -10,7 +10,9 @@
     h1
         text-transform: uppercase
         font-weight: 800
-        font-size: 3.25rem
+        font-size: 2rem
+        @include small
+            font-size: 3.25rem
         letter-spacing: 0.3125rem
         margin: 0
     p
@@ -18,6 +20,8 @@
         text-transform: uppercase
         font-size: 1rem
         letter-spacing: 0.1875rem
+        padding-left: 10px
+        padding-right: 10px
     span
         font-family: Georgia, Cambria, 'Times New Roman', Times, serif
         font-style: italic
@@ -28,7 +32,9 @@ hr
     margin: 0 auto
     border: 0
     display: block
-    max-width: 40rem
+    width: 80%
+    @include small
+        max-width: 40rem
     height: 2.5rem
     border-top: solid 1px rgba(169, 173, 177, 0.3)
     margin-top: 2.5rem
@@ -77,9 +83,10 @@ hr
             font-size: 0.8rem
 
 .blog__post
-    max-width: 40rem
+    max-width: 85%
+    @include small
+        max-width: 40rem
     margin: 0 auto
-    margin-bottom: 10rem
     .post--header
         text-align: center
         h1
@@ -109,7 +116,9 @@ hr
         display: block
         width: 100%
         background: #0f0f0f
-        padding: 80px
+        padding: 40px 10px
+        @include small
+            padding: 80px
         span
             display: block
             background-color: transparent
@@ -122,13 +131,17 @@ hr
                     margin-right: 10px
             &:nth-child(2)
                 font-weight: 800
-                font-size: 3.5rem
+                font-size: 2.5rem
+                @include small
+                    font-size: 3.5rem
                 width: 80%
                 margin: 0 auto
                 margin-top: 2rem
             &:nth-child(3)
                 font-weight: 300
-                font-size: 1.5rem
+                font-size: 1rem
+                @include small
+                    font-size: 1.5rem
                 color: #aaaeb2
                 margin-bottom: 2rem
             &:nth-child(4)
@@ -145,7 +158,9 @@ hr
                     border-color: #fff
 
 .blog__more
-    max-width: 40rem
+    width: 85%
+    @include small
+        max-width: 40rem
     margin: 0 auto
     margin-top: 5rem
     margin-bottom: 5rem
@@ -167,18 +182,25 @@ hr
             span
                 color: #939aa1
                 &:nth-child(1)
-                    float: left
+                    display: block
                     font-size: 0.8rem
+                    @include small
+                        float: left
+                        font-size: 0.8rem
                     width: 100px
-                    margin-top: 0.2rem
+                    @include small
+                        margin-top: 0.2rem
                 &:nth-child(2)
                     color: #555
                     font-weight: 800
                     font-size: 0.95rem
                 &:nth-child(3)
-                    margin-top: 0.2rem
+                    margin-left: 5px
                     font-size: 0.8rem
-                    float: right
+                    @include small
+                        margin-left: 0px
+                        float: right
+                        margin-top: 0.2rem
 
 
 
