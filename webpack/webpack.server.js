@@ -1,3 +1,4 @@
+import os from 'os';
 import WebpackDevServer from 'webpack-dev-server';
 import webpack from 'webpack';
 import chalk from 'chalk';

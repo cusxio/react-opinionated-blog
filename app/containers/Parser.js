@@ -39,12 +39,12 @@ class Parser extends Component {
             this.getPage(nextProps, this.context);
         }
     }
-    componentDidUpdate() {
-        this.catchLinks();
-    }
-    componentDidMount() {
-        this.catchLinks();
-    }
+    // componentDidUpdate() {
+    //     this.catchLinks();
+    // }
+    // componentDidMount() {
+    //     this.catchLinks();
+    // }
     getPage(props, context) {
         const route = splatToUrl(props.params.splat);
         const pageInContext = context.pages[route];

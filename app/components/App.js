@@ -2,7 +2,13 @@ import React, { PropTypes } from 'react';
 import Helmet from 'react-helmet';
 import debounce from 'lodash/debounce';
 import throttle from 'lodash/throttle';
-import Modernizr from 'modernizr';
+import { canUseDOM } from 'exenv';
+
+let Modernizr;
+if (canUseDOM) {
+    require('browsernizr/test/touchevents');
+    Modernizr = require('browsernizr');
+}
 
 const propTypes = {
     children: PropTypes.element.isRequired,

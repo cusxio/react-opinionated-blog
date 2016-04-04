@@ -2,6 +2,7 @@ import url from 'url';
 
 export default function catchLinks(node, cb) {
     node.addEventListener('click', function (ev) {
+        console.log(ev);
         if (ev.altKey || ev.ctrlKey || ev.metaKey || ev.shiftKey || ev.defaultPrevented) {
             return true;
         }

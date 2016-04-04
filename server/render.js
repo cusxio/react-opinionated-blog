@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import configureStore from '../app/redux/store';
 
 import getAssetsPaths from '../webpack/utils/assets-path';
-import Html from '../app/components/Html';
+import HtmlDocument from '../app/components/HtmlDocument';
 import routes from '../app/router/routes';
 
 import ContextProvider from '../app/containers/ContextProvider';
@@ -57,7 +57,7 @@ export default async function render(ctx, next) {
             };
             const assets = getAssetsPaths();
             const html = renderToStaticMarkup(
-                <Html
+                <HtmlDocument
                     head={head}
                     markup={markup}
                     assets={assets}
