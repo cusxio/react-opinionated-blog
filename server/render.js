@@ -15,11 +15,13 @@ import ContextProvider from '../app/containers/ContextProvider';
 import Home from '../app/components/Home';
 import Blog from '../app/components/Blog';
 import Post from '../app/components/Post';
+import PageError from '../app/components/PageError';
 
 const layouts = {
     Home,
     Blog,
     Post,
+    PageError,
 };
 
 const pagesfromJson = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '_tmp', 'data.json'), 'utf-8'));

@@ -13,11 +13,13 @@ import './css/style.sass';
 import Home from './components/Home';
 import Blog from './components/Blog';
 import Post from './components/Post';
+import PageError from './components/PageError';
 
 const layouts = {
     Home,
     Blog,
     Post,
+    PageError,
 };
 
 const history = useScroll(useRouterHistory(createBrowserHistory))();

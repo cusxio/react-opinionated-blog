@@ -6,7 +6,7 @@ import * as ActionTypes from '../redux/actions';
 
 const splatToUrl = string => (`/${string}`);
 const canGetPage = route => {
-    return Boolean(route !== '/' && route !== '/blog');
+    return Boolean(route.includes('/blog/'));
 };
 
 let _catchLinks;
@@ -74,6 +74,7 @@ class Parser extends Component {
         } else if (route === '/blog') {
             return context.layouts.Blog;
         }
+        return context.layouts.PageError;
     }
     catchLinks() {
         if (!canUseDOM) {

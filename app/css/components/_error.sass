@@ -1,0 +1,42 @@
+.error
+    cursor: default
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    height: 100vh
+    color: #333
+    pre
+        font-size: 0.8rem !important
+        margin: 30px 0
+    .error__code
+        font-weight: bold
+        font-size: 3em
+    .error__type
+        font-size: 1.5em
+        font-weight: bold
+        text-align: center
+    .error__description
+        text-align: center
+    .error__links
+        margin-top: 100px
+        a
+            font-size: 1.5rem
+            color: #555
+            text-decoration: none
+            margin-right: 30px
+            opacity: 0.7
+            transition: opacity 0.1s ease-in-out, color 0.1s ease-in-out 
+            &:last-child
+                margin-right: 0px
+
+.h
+    .error
+        .error__links
+            a
+                &:first-child:hover
+                    opacity: 1
+                    color: #f16162
+                &:last-child:hover
+                    opacity: 1
+                    color: #00aced
