@@ -15,6 +15,15 @@ export default class Post extends Component {
         e.preventDefault();
         this.context.router.goBack();
     }
+    genTag(tagsArr) {
+        const tag = tagsArr[0];
+        if (tag === 'Development') {
+            return 'DEV';
+        } else if (tag === 'JavaScript') {
+            return 'JS';
+        }
+        return tag.toUpperCase();
+    }
     render() {
         const post = this.props;
         const meta = [
@@ -39,7 +48,7 @@ export default class Post extends Component {
                     />
                     <a onClick={this.handleClick} className="post--back" href="/blog"><i className="ion-arrow-left-c"></i> BACK TO BLOG</a>
                     <div className="post--tags">
-                    LIFE
+                    {this.genTag(post.__TAGS__)}
                     </div>
                     <div className="post--header">
                         <h1>
