@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
+import Disqus from 'react-disqus-thread';
 import Footer from './Footer';
 
 const contextTypes = {
@@ -70,6 +71,12 @@ export default class Post extends Component {
                             <i className="ion-social-googleplus"></i>
                         </a>
                     </div>
+                    <Disqus
+                        shortname="cusxio"
+                        identifier={post.__TITLE__.toLowerCase().split(' ').join('')}
+                        title={post.__TITLE__}
+                        url={`https://cusx.io${post.__ROUTE__}/`}
+                    />
                 </div>
                 <Footer />
             </div>
