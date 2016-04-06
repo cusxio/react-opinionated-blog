@@ -3,6 +3,7 @@ import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
 import cssmqpacker from 'css-mqpacker';
 import AssetsPlugin from 'assets-webpack-plugin';
+import devEnv from '../config/dev-environment';
 import notifyStats from './utils/notify-stats';
 
 export default function (WEBPACK_HOST, WEBPACK_PORT) {
@@ -61,6 +62,7 @@ export default function (WEBPACK_HOST, WEBPACK_PORT) {
             new webpack.DefinePlugin({
                 'process.env': {
                     NODE_ENV: JSON.stringify('development'),
+                    GA_TRACKING_ID: JSON.stringify(devEnv.GA_TRACKING_ID),
                 },
             }),
             new webpack.HotModuleReplacementPlugin(),

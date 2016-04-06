@@ -2,6 +2,17 @@
 
 PORT='5000'
 
+# PORT CHECKING
+echo exit | nc localhost $PORT
+
+if [ $? -eq 0 ]; then
+    echo "something is already running on $PORT"
+    exit 1
+fi
+
+# https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html
+set -e 
+
 OUTPUT='./dist'
 BUNDLE='./public/bundle'
 
@@ -10,19 +21,24 @@ rm -rf $BUNDLE
 
 ./node_modules/.bin/webpack --config ./webpack/prod.config.js
 
-PORT=$PORT node server & SERVER_PID=$!
+PORT=$PORT node server & 
+SERVER_PID=$!
+
+set +e
 
 # wait for the server to start up
 while ! echo exit | nc 0.0.0.0 $PORT; do sleep 1; done
 
 ./script/generator.js "http://0.0.0.0:$PORT" $OUTPUT
 
-DUMP_EXIT=$?
+GEN_EXIT=$?
 
 kill $SERVER_PID
 
-if [ $DUMP_EXIT -eq 0 ]; then
+set -e
+
+if [ $GEN_EXIT -eq 0 ]; then
     cp -R public/* $OUTPUT
 else
-    exit $DUMP_EXIT
+    exit $GEN_EXIT
 fi
