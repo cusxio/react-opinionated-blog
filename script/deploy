@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -e
+
+CWD="./dist/"
+
+./script/s3-deploy.js $CWD** --cwd $CWD --bucket $AWS_S3_BUCKET

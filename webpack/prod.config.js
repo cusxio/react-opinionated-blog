@@ -5,6 +5,7 @@ var cssmqpacker = require('css-mqpacker');
 var AssetsPlugin = require('assets-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var Purify = require("purifycss-webpack-plugin");
+var devEnv = require('../config/dev-environment');
 
 module.exports = {
     devtool: 'source-map',
@@ -51,6 +52,7 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify('production'),
+                GA_TRACKING_ID: JSON.stringify(devEnv.GA_TRACKING_ID),
             },
         }),
         new webpack.optimize.DedupePlugin(),

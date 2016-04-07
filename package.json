@@ -4,8 +4,10 @@
   "description": "react-opinionated-boilerplate",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/nodemon ./server/index.js & ./node_modules/.bin/babel-node webpack/webpack.server.js",
-    "build": "./node_modules/.bin/babel-node ./script/json-markdown && ./script/build",
+    "markdown": "./node_modules/.bin/babel-node ./script/json-markdown",
+    "development": "./node_modules/.bin/nodemon ./server/index.js & ./node_modules/.bin/babel-node webpack/webpack.server.js",
+    "start": "npm run markdown && npm run development",
+    "build": "npm run markdown && ./script/build",
     "clean": "rm -rf ./dist & rm -rf ./public/bundle"
   },
   "author": "Jonathan Chan",
@@ -13,6 +15,7 @@
   "dependencies": {
     "babel-runtime": "^6.6.1",
     "dotenv": "^2.0.0",
+    "glob": "^7.0.3",
     "lodash": "^4.6.1",
     "react": "^15.0.0-rc.2",
     "react-disqus-thread": "^0.3.1",
@@ -27,6 +30,7 @@
   "devDependencies": {
     "assets-webpack-plugin": "^3.4.0",
     "autoprefixer": "^6.3.5",
+    "aws-sdk": "^2.3.1",
     "axios": "^0.9.1",
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.4",
@@ -48,11 +52,14 @@
     "eslint-config-cusxio-react": "0.0.4",
     "exenv": "^1.2.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "glob": "^7.0.3",
     "gray-matter": "^2.0.2",
     "json-loader": "^0.5.4",
     "koa": "^2.0.0",
     "koa-compress": "^2.0.0",
     "koa-static": "^3.0.0",
+    "mime": "^1.3.4",
+    "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
     "moment": "^2.12.0",
     "node-sass": "^3.4.2",
