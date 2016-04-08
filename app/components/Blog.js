@@ -27,21 +27,25 @@ export default class Blog extends Component {
         const meta = [
             { property: 'og:type', content: 'article' },
             { property: 'og:title', content: mostRecent.__TITLE__ },
-            { property: 'og:url', content: `http://cusx.io${mostRecent.__ROUTE__}` },
+            { property: 'og:url', content: `https://cusx.io${mostRecent.__ROUTE__}` },
             { property: 'og:description', content: mostRecent.__DESC__ },
             // { property: 'og:image', content: 'http://someurl.com/pic.png' },
             { name: 'twitter:card', content: 'summary' },
             { name: 'twitter:title', content: mostRecent.__TITLE__ },
             { name: 'twitter:creator', content: '@cusxio' },
             { name: 'twitter:description', content: mostRecent.__DESC__ },
-            { name: 'twitter:image', content: `http://cusx.io${mostRecent.__ROUTE__}` },
+            { name: 'twitter:image', content: `https://cusx.io${mostRecent.__ROUTE__}` },
             { name: 'description', content: mostRecent.__DESC__ },
+        ];
+        const link = [
+            { rel: 'canonical', href: 'https://cusx.io/blog/' },
         ];
         return (
             <div className="blog">
                 <Helmet
                     title="cusx.io | Blog"
                     meta={meta}
+                    link={link}
                 />
                 <div className="blog__header">
                     <h1>Droplets</h1>
@@ -59,13 +63,13 @@ export default class Blog extends Component {
                     <div className="cus post--content" dangerouslySetInnerHTML={{ __html: mostRecent.__HTML__ }}></div>
                     {/* eslint-enable */}
                     <div className="social">
-                        <a data-tooltip="Share on Twitter" data-tooltip-pos="down" href={`https://twitter.com/intent/tweet?url=http://cusx.io${mostRecent.__ROUTE__}&text=${mostRecent.__DESC__}&via=cusxio`} target="share">
+                        <a data-tooltip="Share on Twitter" data-tooltip-pos="down" href={`https://twitter.com/intent/tweet?url=https://cusx.io${mostRecent.__ROUTE__}&text=${mostRecent.__DESC__}&via=cusxio`} target="share">
                             <i className="ion-social-twitter"></i>
                         </a>
-                        <a data-tooltip="Share on Facebook" data-tooltip-pos="down" href={`https://www.facebook.com/sharer/sharer.php?u=http://cusx.io${mostRecent.__ROUTE__}`} target="share">
+                        <a data-tooltip="Share on Facebook" data-tooltip-pos="down" href={`https://www.facebook.com/sharer/sharer.php?u=https://cusx.io${mostRecent.__ROUTE__}`} target="share">
                             <i className="ion-social-facebook"></i>
                         </a>
-                        <a data-tooltip="Share on Google Plus" data-tooltip-pos="down" href={`https://plus.google.com/share?url=http://cusx.io${mostRecent.__ROUTE__}`} target="share">
+                        <a data-tooltip="Share on Google Plus" data-tooltip-pos="down" href={`https://plus.google.com/share?url=https://cusx.io${mostRecent.__ROUTE__}`} target="share">
                             <i className="ion-social-googleplus"></i>
                         </a>
                     </div>

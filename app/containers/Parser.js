@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { findDOMNode } from 'react-dom';
 import * as ActionTypes from '../redux/actions';
 
-const splatToUrl = string => (`/${string}`);
+const splatToUrl = string => (`/${string}/`);
 const canGetPage = route => {
-    return Boolean(route.includes('/blog/'));
+    return Boolean(route.includes('/blog/') && route.length > 6);
 };
 
 let _catchLinks;
@@ -69,9 +69,9 @@ class Parser extends Component {
         const route = splatToUrl(props.params.splat);
         if (canGetPage(route) && props.page) {
             return context.layouts.Post;
-        } else if (route === '/') {
+        } else if (route === '//') {
             return context.layouts.Home;
-        } else if (route === '/blog') {
+        } else if (route === '/blog/') {
             return context.layouts.Blog;
         }
         return context.layouts.PageError;

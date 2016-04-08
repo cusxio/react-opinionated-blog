@@ -30,15 +30,18 @@ export default class Post extends Component {
         const meta = [
             { property: 'og:type', content: 'article' },
             { property: 'og:title', content: post.__TITLE__ },
-            { property: 'og:url', content: `http://cusx.io${post.__ROUTE__}` },
+            { property: 'og:url', content: `https://cusx.io${post.__ROUTE__}` },
             { property: 'og:description', content: post.__DESC__ },
             // { property: 'og:image', content: 'http://someurl.com/pic.png' },
             { name: 'twitter:card', content: 'summary' },
             { name: 'twitter:title', content: post.__TITLE__ },
             { name: 'twitter:creator', content: '@cusxio' },
             { name: 'twitter:description', content: post.__DESC__ },
-            { name: 'twitter:image', content: `http://cusx.io${post.__ROUTE__}` },
+            { name: 'twitter:image', content: `https://cusx.io${post.__ROUTE__}` },
             { name: 'description', content: post.__DESC__ },
+        ];
+        const link = [
+            { rel: 'canonical', href: `https://cusx.io${post.__ROUTE__}` },
         ];
         return (
             <div className="one__container">
@@ -46,8 +49,9 @@ export default class Post extends Component {
                     <Helmet
                         title={`cusx.io | ${post.__TITLE__}`}
                         meta={meta}
+                        link={link}
                     />
-                    <a onClick={this.handleClick} className="post--back" href="/blog"><i className="ion-arrow-left-c"></i> BACK TO BLOG</a>
+                    <a onClick={this.handleClick} className="post--back" href="/blog/"><i className="ion-arrow-left-c"></i> BACK TO BLOG</a>
                     <div className="post--tags">
                     {this.genTag(post.__TAGS__)}
                     </div>
@@ -64,10 +68,10 @@ export default class Post extends Component {
                         <a data-tooltip="Share on Twitter" data-tooltip-pos="down" href={`https://twitter.com/intent/tweet?url=https://cusx.io${post.__ROUTE__}&text=${post.__DESC__}&via=cusxio`} target="share">
                             <i className="ion-social-twitter"></i>
                         </a>
-                        <a data-tooltip="Share on Facebook" data-tooltip-pos="down" href={`https://www.facebook.com/sharer/sharer.php?u=http://cusx.io${post.__ROUTE__}`} target="share">
+                        <a data-tooltip="Share on Facebook" data-tooltip-pos="down" href={`https://www.facebook.com/sharer/sharer.php?u=https://cusx.io${post.__ROUTE__}`} target="share">
                             <i className="ion-social-facebook"></i>
                         </a>
-                        <a data-tooltip="Share on Google Plus" data-tooltip-pos="down" href={`https://plus.google.com/share?url=http://cusx.io${post.__ROUTE__}`} target="share">
+                        <a data-tooltip="Share on Google Plus" data-tooltip-pos="down" href={`https://plus.google.com/share?url=https://cusx.io${post.__ROUTE__}`} target="share">
                             <i className="ion-social-googleplus"></i>
                         </a>
                     </div>

@@ -33,11 +33,15 @@ export default class Home extends Component {
         const meta = [
             { name: 'description', content: 'cusx.io - Website for Jonathan Chan' },
         ];
+        const link = [
+            { rel: 'canonical', href: 'https://cusx.io/' },
+        ];
         return (
             <div className="home">
                 <Helmet
                     title="cusx.io | Home"
                     meta={meta}
+                    link={link}
                 />
                 <div className="home__logo">
                     <div className="box one">
@@ -76,7 +80,7 @@ export default class Home extends Component {
                     <a href="https://twitter.com/cusxio"><i className="ion-social-twitter"></i></a>
                     <a href="https://github.com/cusxio"><i className="ion-social-octocat"></i></a>
                     <a href="https://www.linkedin.com/in/cusxio"><i className="ion-social-linkedin"></i></a>
-                    <Link to="/blog"><i className="ion-waterdrop"></i></Link>
+                    <Link to="/blog/"><i className="ion-waterdrop"></i></Link>
                     <a onMouseLeave={this.handleMouseLeave} onClick={this.handleClick} data-tooltip="Copy email" data-tooltip-pos="down" href="mailto:cus@cusx.io"><i className="ion-email"></i></a>
                     <input ref={ref => (this._input = ref)} type="text" defaultValue="cus@cusx.io" style={{ display: "none", position: "absolute", left: "1000px" }} />
                 </div>
