@@ -4,11 +4,12 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import mime from 'mime';
-import aws from 'aws-sdk';
+import AWS from 'aws-sdk';
+import chalk from 'chalk';
 import glob from 'glob';
 import minimist from 'minimist';
 import flatten from 'lodash/flatten';
-import Promise, { promisify } from 'bluebird';
+import { promisify } from 'bluebird';
 
 const argv = minimist(process.argv.slice(2));
 const readFilePromise = promisify(fs.readFile);
@@ -17,6 +18,7 @@ const readDirPromise = promisify(fs.readdir);
 const options = {
     cwd: argv.cwd || '',
     bucket: argv.bucket,
+    region: argv.region || 'ap-southeast-1',
 };
 
 function contentType(src) {
@@ -59,9 +61,9 @@ function upload(client, S3, fileObject) {
 
     client.putObject(params, err => {
         if (err) {
-            console.log('ERR UPLOAD');
+            console.log(`    ${chalk.red(`✖ Error: ${err} (${err.stack}})`)}`);
         }
-        console.log('Uploaded');
+        console.log(`    ${chalk.green.bold(`✔ Uploaded. ${params.Bucket}/${params.Key}`)}`);
     });
 }
 
@@ -73,7 +75,7 @@ function sync(client, S3, fileObject) {
 
     client.headObject(params, err => {
         if (err && (err.statusCode === 304 || err.statusCode === 412)) {
-            console.log(`Unmodified - ${params.Key}`);
+            console.log(`    ${chalk.yellow.bold(`Unmodified: ${params.Key}`)}`);
             return;
         }
 
@@ -81,40 +83,43 @@ function sync(client, S3, fileObject) {
     });
 }
 
-function readFile(filePath) {
-    return new Promise(resolve => {
-        const stat = fs.statSync(filePath);
-        if (stat.isFile()) {
-            readFilePromise(filePath)
-                .then(data => {
-                    resolve({
-                        stat,
-                        contents: data,
-                        base: path.join(process.cwd(), options.cwd),
-                        path: path.join(process.cwd(), filePath),
-                    });
+function readFile(filePath, cb) {
+    const stat = fs.statSync(filePath);
+    if (stat.isFile()) {
+        readFilePromise(filePath)
+            .then(data => {
+                cb({
+                    stat,
+                    contents: data,
+                    base: path.join(process.cwd(), options.cwd),
+                    path: path.join(process.cwd(), filePath),
                 });
-        } else if (stat.isDirectory()) {
-            readDirPromise(filePath)
-                .then(files => {
-                    files.forEach(filename => {
-                        readFile(path.join(filePath, filename));
-                    });
+            })
+            .catch(err => {
+                console.log(`    ${chalk.red(`✖ Error: ${err}`)}`);
+            });
+    } else if (stat.isDirectory()) {
+        readDirPromise(filePath)
+            .then(files => {
+                files.forEach(filename => {
+                    readFile(path.join(filePath, filename), cb);
                 });
-        }
-    });
+            })
+            .catch(err => {
+                console.log(`    ${chalk.red(`✖ Error: ${err}`)}`);
+            });
+    }
 }
 
-function deploy(globbedFilesPath, S3) {
-    aws.config.loadFromPath(path.join(process.cwd(), 'config', 'aws.json'));
+function deploy(globbedFilesPath, AWSOpt, S3) {
+    AWS.config.update(AWSOpt);
 
-    const client = new aws.S3();
+    const client = new AWS.S3();
 
     globbedFilesPath.forEach(filePath => {
-        readFile(filePath)
-            .then(fileObject => {
-                sync(client, S3, fileObject);
-            });
+        readFile(filePath, function cb(fileObject) {
+            sync(client, S3, fileObject);
+        });
     });
 }
 
@@ -123,6 +128,10 @@ const globbedFilesPath = flatten(argv._
         return glob.sync(pattern);
     }));
 
+console.log(`    ${chalk.green.bold('Deploying files to S3 Bucket: %s')}`, options.bucket);
+
 deploy(globbedFilesPath, {
+    region: options.region,
+}, {
     Bucket: options.bucket,
 });
