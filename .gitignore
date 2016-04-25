@@ -2,7 +2,6 @@
 node_modules
 app/bundles
 dist
-public
+public/bundle
 npm-debug.log
-_droplets
 _tmp
