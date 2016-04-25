@@ -8,6 +8,23 @@ import Promise from 'bluebird';
 
 const mdFilesDir = path.join(__dirname, '..', '_droplets');
 const mdFilesArr = fs.readdirSync(mdFilesDir);
+const tmpDir = path.join(__dirname, '..', '_tmp');
+
+function folderExists(filePath) {
+    try {
+        return fs.statSync(filePath).isDirectory();
+    } catch (err) {
+        return false;
+    }
+}
+
+try {
+    if (!folderExists(tmpDir)) {
+        fs.mkdirSync(tmpDir);
+    }
+} catch (err) {
+    console.log(`    ${chalk.red.bold(`✖ Error: ${err}`)}`);
+}
 
 let output = {};
 
