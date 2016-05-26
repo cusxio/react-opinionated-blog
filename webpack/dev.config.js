@@ -52,11 +52,6 @@ export default function (WEBPACK_HOST, WEBPACK_PORT) {
                 { test: /\.modernizrrc$/, loader: 'modernizr' },
             ],
         },
-        resolve: {
-            alias: {
-                modernizr$: path.resolve(__dirname, '../config/.modernizrrc'),
-            },
-        },
         postcss: [autoprefixer({ browsers: ['last 2 version'] }), cssmqpacker],
         plugins: [
             new webpack.DefinePlugin({
