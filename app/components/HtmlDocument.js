@@ -40,7 +40,8 @@ const HtmlDocument = ({ assets, markup, head }) => (
             {/* eslint-disable */}
             <div id="app" dangerouslySetInnerHTML={{ __html: markup }}></div>
             {/* eslint-enable */}
-            <script src={assets.js}></script>
+            {assets.vendor && <script src={assets.vendor}></script>}
+            <script src={assets.main}></script>
         </body>
     </html>
 );

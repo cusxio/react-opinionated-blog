@@ -11,12 +11,20 @@ module.exports = {
     devtool: 'source-map',
     entry: {
         main: './app/init.js',
+        vendor: [
+            'react',
+            'react-dom',
+            'react-router',
+            'redux',
+            'react-redux',
+        ],
     },
     output: {
         path: path.join(__dirname, '../public/bundle'),
         filename: '[name]-[chunkhash].js',
         chunkFilename: '[name]-[chunkhash].js',
         publicPath: '/bundle/',
+        jsonpFunction: 'vInit',
     },
     module: {
         loaders: [
@@ -51,6 +59,7 @@ module.exports = {
         }),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor-[hash].js'),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 unused: true,
