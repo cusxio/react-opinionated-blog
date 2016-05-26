@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, useRouterHistory } from 'react-router';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
-import useScroll from 'scroll-behavior/lib/useStandardScroll';
+import useScroll from 'scroll-behavior';
 import { Provider } from 'react-redux';
 import ga from 'react-ga';
 import pagesfromJson from '../_tmp/data.json';
@@ -29,7 +29,7 @@ function logPageView() {
     ga.pageview(this.state.location.pathname);
 }
 
-const history = useScroll(useRouterHistory(createBrowserHistory))();
+const history = useScroll(useRouterHistory(createBrowserHistory)());
 
 const store = configureStore();
 
