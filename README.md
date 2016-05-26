@@ -69,7 +69,7 @@ Static files are generated using the [`build`](https://github.com/cusxio/react-o
 ## Deploy
 
 ```bash
-$ ./script/deploy AWS_S3_BUCKET=BUCKET_NAME
+$ AWS_S3_BUCKET=BUCKET_NAME ./script/deploy 
 ```
 
 Enjoy 🔥
