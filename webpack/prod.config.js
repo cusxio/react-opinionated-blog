@@ -57,6 +57,7 @@ module.exports = {
                 dead_code: true,
                 warnings: false,
             },
+            comments: false,
         }),
         new AssetsPlugin({
             filename: 'webpack-stats.json',
